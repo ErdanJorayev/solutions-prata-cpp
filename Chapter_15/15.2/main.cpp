@@ -34,8 +34,6 @@ int main()
         catch (bad_gmean & hg)
         {
             cout << hg.what();
-            cout << "Values used: " << hg.v1 << ", "
-                 << hg.v2 << endl;
             cout << "Sorry, you don't get to play any more.\n";
             break;
         }
@@ -47,13 +45,13 @@ int main()
 double hmean(double a, double b)
 {
     if (a == -b)
-        throw bad_hmean(a, b);
+        throw bad_hmean();
     return 2.0 * a * b / (a + b);
 }
 
 double gmean(double a, double b)
 {
     if (a < 0 || b < 0)
-        throw bad_gmean(a, b);
+        throw bad_gmean();
     return std::sqrt(a * b);
 }
